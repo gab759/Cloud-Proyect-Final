@@ -14,7 +14,7 @@ function Game5() {
         <>
             <div className="centered-container">
                 <div className="centered-content">
-                    <h1 className="centered-title">React + Unity / Tecsup</h1>
+                    <h1 className="centered-title">Game5</h1>
                     <Unity unityProvider={unityProvider} className="centered-unity" />
 
 
