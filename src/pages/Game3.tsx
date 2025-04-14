@@ -1,14 +1,16 @@
 import {Unity, useUnityContext} from "react-unity-webgl";
 
 function Game3() {
-    const { unityProvider } = useUnityContext({
+    const { unityProvider, sendMessage } = useUnityContext({
         loaderUrl: "/Game.loader.js",
         dataUrl: "/Game.data",
         frameworkUrl: "/Game.framework.js",
         codeUrl: "/Game.wasm",
     });
 
-
+    function handleSceneStart() {
+        sendMessage("SceneManager", "ReloadScene");
+    }
 
     return (
         <>
@@ -17,7 +19,9 @@ function Game3() {
                     <h1 className="centered-title">Game3</h1>
                     <Unity unityProvider={unityProvider} className="centered-unity" />
 
-
+                    <div className="centered-content">
+                        <button onClick={handleSceneStart}>Reload</button>
+                    </div>
                 </div>
             </div>
 
