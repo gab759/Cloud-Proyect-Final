@@ -8,10 +8,13 @@ function Game3() {
         codeUrl: "/Game.wasm",
     });
 
+    let name: string = "Gabriel";
     function handleSceneStart() {
         sendMessage("SceneManager", "ReloadScene");
     }
-
+    function sendName() {
+        sendMessage("SceneManager", "ChangeText", name);
+    }
     return (
         <>
             <div className="centered-container">
@@ -21,6 +24,7 @@ function Game3() {
 
                     <div className="centered-content">
                         <button onClick={handleSceneStart}>Reload</button>
+                        <button onClick={sendName}>Send Name</button>
                     </div>
                 </div>
             </div>
