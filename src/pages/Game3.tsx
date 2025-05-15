@@ -3,10 +3,10 @@ import { useState } from "react";
 
 function Game3() {
     const { unityProvider, sendMessage } = useUnityContext({
-        loaderUrl: "/Game.loader.js",
-        dataUrl: "/Game.data",
-        frameworkUrl: "/Game.framework.js",
-        codeUrl: "/Game.wasm",
+        loaderUrl: "/BuildGame3.loader.js",
+        dataUrl: "/BuildGame3.data",
+        frameworkUrl: "/BuildGame3.framework.js",
+        codeUrl: "/BuildGame3.wasm",
     });
 
     const [name, setName] = useState("");
