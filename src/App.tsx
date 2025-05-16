@@ -10,6 +10,7 @@ import Game3 from "./pages/Game3.tsx";
 import Game4 from "./pages/Game4.tsx";
 import Game5 from "./pages/Game5.tsx";
 import Login from "./pages/Login.tsx";
+import GameExtra from './pages/GameExtra.tsx';
 function App() {
     return (
         <>
@@ -24,6 +25,7 @@ function App() {
                     <Route path='/game4' element={<Game4/>}/>
                     <Route path='/game5' element={<Game5/>}/>
                     <Route path='/login' element={<Login/>}/>
+                    <Route path='/gameextra' element={<GameExtra/>}/>
                 </Routes>
                 <MainFooter />
             </BrowserRouter>
