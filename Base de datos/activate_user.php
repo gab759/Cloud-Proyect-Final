@@ -3,22 +3,20 @@ require 'db.php';
 header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents("php://input"), true);
+$id = $data['id'] ?? null;
+$modified_by = $data['modified_by'] ?? null;
 
-if (!isset($data['email'], $data['password'], $data['username'])) {
+if (!$id || !$modified_by) {
     http_response_code(400);
     echo json_encode(['error' => 'Faltan parámetros']);
     exit;
 }
 
-$email = $data['email'];
-$password = $data['password'];
-$username = $data['username'];
-
-$stmt = $conn->prepare("CALL sp_create_user(?, ?, ?)");
-$stmt->bind_param("sss", $username, $email, $password);
+$stmt = $conn->prepare("CALL sp_activate_user(?, ?)");
+$stmt->bind_param("is", $id, $modified_by);
 
 if ($stmt->execute()) {
-    echo json_encode(['message' => 'Usuario creado correctamente']);
+    echo json_encode(['message' => 'Usuario activado correctamente']);
 } else {
     echo json_encode(['error' => 'Error al ejecutar procedimiento', 'details' => $stmt->error]);
 }
